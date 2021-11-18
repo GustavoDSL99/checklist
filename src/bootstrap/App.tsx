@@ -1,17 +1,19 @@
-import { BrowserRouter } from 'react-router-dom';
-import './App.css';
-import Rotas from './Rotas';
-import Tema from './Tema';
+import { BrowserRouter } from 'react-router-dom'
+import './App.css'
+import Rotas from './Rotas'
+import { Provider } from 'react-redux'
+import Tema from './Tema'
+import store from '../redux/store'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Tema>
-        <Rotas />
-      </Tema>
-    </BrowserRouter>
-
-
+    <Provider store={store}>
+      <BrowserRouter>
+        <Tema>
+          <Rotas />
+        </Tema>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
