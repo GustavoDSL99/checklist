@@ -1,28 +1,23 @@
 import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft";
-import { Button, IconButton } from "@material-ui/core";
-import MenuIcon from '@material-ui/icons/Menu';
+import { IconButton } from "@material-ui/core";
 import React from "react";
 import { BoxHeader } from "./styles.module";
+import { useHistory } from "react-router-dom";
 
 type Props = {
-  botao?: "drawer" | "voltar";
+  rota?: "novochecklist" | "adicionarcheck" | "responderchecklist" | "inicio";
 }
 
-export function Header({ botao, ...rest }: Props) {
+export function Header({ rota, ...rest }: Props) {
+  const history = useHistory()
+
   return (
 
     <BoxHeader>
-      {botao === "drawer" ?
-        <IconButton>
-          <MenuIcon className="Menu-Drawer" />
-        </IconButton>
-        : botao === "voltar" ?
-          <IconButton>
-            <KeyboardArrowLeftIcon className="Botao-Voltar" />
-          </IconButton>
-          : <div className="Div-Invisivel-Auxiliar" />
-      }
-      <Button fullWidth onClick={() => window.location.href = "/novatarefa"} type="submit" color="primary" variant="contained">nova tarefa</Button>
+      <IconButton onClick={() => history.push(`/${rota}`)}>
+        <KeyboardArrowLeftIcon className="Botao-Voltar" />
+      </IconButton>
+      <div className="Div-Invisivel-Auxiliar" />
     </BoxHeader>
   )
 }

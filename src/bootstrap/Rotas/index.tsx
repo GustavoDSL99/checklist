@@ -1,17 +1,24 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Formulario from '../../screens/Formulario';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import AdicionarCheck from '../../screens/AdicionarCheck';
+import { ChecklistRespondidoF } from '../../screens/ChecklistRespondido';
 import Inicio from '../../screens/Inicio';
-import NovaTarefa from '../../screens/NovaTarefa';
+import NovoChecklist from '../../screens/NovoChecklist';
+import ResponderChecklist from '../../screens/ResponderChecklist';
 
 const Rotas = () => {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/formulario" element={<Formulario />} />
-        <Route path="/novatarefa" element={<NovaTarefa />} />
-      </Routes>
+      <Switch>
+        <Route exact path="/">
+          <Redirect to="/inicio" />
+        </Route>
+        <Route exact path="/inicio" component={Inicio} />
+        <Route exact path="/novochecklist" component={NovoChecklist} />
+        <Route exact path="/adicionarcheck" component={AdicionarCheck} />
+        <Route exact path="/responderchecklist" component={ResponderChecklist} />
+        <Route exact path="/checklistrespondido" component={ChecklistRespondidoF} />
+      </Switch>
     </>
   )
 };
